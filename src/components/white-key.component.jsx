@@ -22,11 +22,9 @@ const WhiteKey = ({ noteIndex, name, subKey, renderSub, ...props }) => {
       onMouseUp={(e) => handleKeyStatusChange(e, onVirtualKeyRelease)}
       {...props}
       className={cn(
-        "group/white cursor-pointer w-[40px] border rounded-b-[4px] bg-gradient-to-b from-slate-200 to-[10%] to-white transition-all relative shadow-sm",
-        isDown ? "h-[202px]" : "h-[200px]",
-        isDown && highlightOnPlay
-          ? "border-violet-600 border-t-gray-400"
-          : "border-gray-400"
+        "group/white cursor-pointer w-[40px] border rounded-b-[4px] bg-gradient-to-b from-slate-200 to-[10%] transition-all relative shadow-sm border-t-0",
+        isDown ? "h-[183px] to-slate-50" : "h-[180px] to-white",
+        isDown && highlightOnPlay ? "border-violet-600" : "border-gray-400"
       )}
     >
       <div
@@ -44,8 +42,7 @@ const WhiteKey = ({ noteIndex, name, subKey, renderSub, ...props }) => {
       ) : null}
       <div
         className={cn(
-          "absolute bottom-0 h-[25px] rounded-b-[4px] transition-all w-full border-t border-t-slate-300 flex items-center justify-center bg-gradient-to-b from-white to-slate-200",
-          isDown ? "from-white to-slate-300" : "from-white to-slate-200"
+          "absolute bottom-0 h-[25px] rounded-b-[4px] transition-all w-full  flex items-center justify-center "
         )}
       >
         {showNotesName ? (

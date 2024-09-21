@@ -21,7 +21,7 @@ const Octave = ({ start = 0, end = 11, number = 1 }) => {
   const notesSlice = getNotesConfig(start, end);
 
   return (
-    <div className="group flex flex-col flex-0 relative">
+    <div className="group flex flex-col flex-0 relative border-t-4 border-t-slate-900">
       {showOctaves ? (
         <>
           <div className="absolute -top-6 left-0 right-0 text-xs h-5 w-full text-slate-300 border-l border-r border-dashed border-transparent px-2 transition-colors group-hover:text-sky-500 group-hover:font-medium group-hover:border-sky-500">
@@ -33,7 +33,7 @@ const Octave = ({ start = 0, end = 11, number = 1 }) => {
           <div className="absolute -bottom-[10px] left-0 right-0 h-[2px] bg-transparent transition-colors rounded-md group-hover:bg-sky-500"></div>
         </>
       ) : null}
-      <div className="flex h-[200px] items-start justify-start relative">
+      <div className="flex h-[180px] items-start justify-start relative">
         {notesSlice.map(({ kIndex, name, subKey }) => {
           return (
             <WhiteKey

@@ -21,9 +21,13 @@ const BlackKey = ({ noteIndex, names, className, ...props }) => {
       onMouseUp={(e) => handleKeyStatusChange(e, onVirtualKeyRelease)}
       {...props}
       className={cn(
-        "group/black border-l-2 border-r-2 border-b-2 border-transparent cursor-pointer absolute top-0 rounded-b-sm bg-gradient-to-b from-black from-[85%] via-slate-500 to-black to-[88%] w-[25px] h-[130px] z-20 shadow-sm flex items-end justify-center",
-        isDown ? "from-[88%] to-[91%]" : "from-[85%] to-[88%]",
-        isDown && highlightOnPlay ? " border-orange-400" : "border-transparent",
+        "group/black transition-all border-l-2 border-t-1 border-r-2 border-b-2 cursor-pointer absolute top-0 rounded-b-sm bg-gradient-to-b from-black from-[85%] via-slate-500 to-black to-[88%] w-[25px] h-[130px] z-20 shadow-sm flex items-end justify-center",
+        isDown
+          ? "from-gray-800 from-[90%] to-[93%]"
+          : "from-black from-[85%] to-[88%]",
+        isDown && highlightOnPlay
+          ? "border-orange-400 border-t-red-500"
+          : "border-transparent border-t-red-500",
         className
       )}
     >
