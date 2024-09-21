@@ -22,8 +22,8 @@ const WhiteKey = ({ noteIndex, name, subKey, renderSub, ...props }) => {
       onMouseUp={(e) => handleKeyStatusChange(e, onVirtualKeyRelease)}
       {...props}
       className={cn(
-        "group/white cursor-pointer w-[40px] border rounded-b-[4px] bg-gradient-to-b from-white from-[88%] via-slate-100 to-slate-200 transition-all relative shadow-sm",
-        isDown ? "h-[203px] via-slate-200/80 to-slate-300/80" : "h-[200px]",
+        "group/white cursor-pointer w-[40px] border rounded-b-[4px] bg-gradient-to-b from-slate-200 to-[10%] to-white transition-all relative shadow-sm",
+        isDown ? "h-[204px] to-slate-50" : "h-[200px] to-white",
         isDown && highlightOnPlay
           ? "border-violet-600 border-t-gray-800"
           : "border-gray-800 border-l-gray-400 border-r-gray-400"
@@ -44,14 +44,14 @@ const WhiteKey = ({ noteIndex, name, subKey, renderSub, ...props }) => {
       ) : null}
       <div
         className={cn(
-          "absolute w-full top-[88%] border-t border-t-slate-300 flex items-center justify-center",
-          isDown ? "top-[89%]" : "top-[88%]"
+          "absolute bottom-0 h-[25px] rounded-b-[4px] transition-all w-full border-t border-t-slate-300 flex items-center justify-center bg-gradient-to-b from-white to-slate-200",
+          isDown ? "from-white to-slate-300" : "from-white to-slate-200"
         )}
       >
         {showNotesName ? (
           <span
             className={cn(
-              "text-xs mt-1 font-bold transition-all text-slate-400 group-hover/white:text-sky-500",
+              "text-xs font-bold transition-all text-slate-400 group-hover/white:text-sky-500",
               isDown ? "text-violet-600 group-hover/white:text-violet-600" : ""
             )}
           >
