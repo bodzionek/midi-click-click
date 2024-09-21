@@ -1,6 +1,3 @@
-import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
 const FIRST_OCTAVE_START = 24;
 const OCTAVE_LENGTH = 12;
 
@@ -27,10 +24,6 @@ const getOctaveConfig = (octave, start, end) => {
   const noteEndIndex = end >= octave.last ? 11 : 11 + end - octave.last;
 
   return { number: octave.oIndex, start: noteStartIndex, end: noteEndIndex };
-};
-
-export const classMerge = (...inputs) => {
-  return twMerge(clsx(inputs));
 };
 
 export const getFirstNoteNumber = (index) => {

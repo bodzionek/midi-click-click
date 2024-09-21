@@ -1,13 +1,14 @@
 const mapDevices = ([id, device]) => {
-  console.log(id, device);
   return { id, device };
 };
 
 export class MidiController {
-  constructor(setInputs, setOutputs) {
+  constructor(setInputs, setOutputs, onKeyPress, onKeyRelease) {
     navigator.requestMIDIAccess().then(
       (midiAccess) => {
         this.midiAccess = midiAccess;
+        this.onKeyPress = onKeyPress;
+        this.onKeyRelease = onKeyRelease;
         midiAccess.onstatechange = () => {
           setInputs(Array.from(midiAccess.inputs, mapDevices));
           setOutputs(Array.from(midiAccess.outputs, mapDevices));
@@ -18,6 +19,39 @@ export class MidiController {
       (err) => console.error(`Failed to get MIDI access - ${err}`)
     );
   }
+
+  clearInputsLogging() {
+    this.midiAccess.inputs.forEach((entry) => {
+      entry.onmidimessage = null;
+    });
+  }
+
+  getInputMessages(inputId) {
+    if (this.midiAccess) {
+      this.clearInputsLogging();
+      const input = this.midiAccess.inputs.get(inputId);
+      if (input) {
+        input.onmidimessage = this.onMIDIMessage;
+      }
+    }
+  }
+
+  onMIDIMessage = (message) => {
+    const command = message.data[0];
+    const note = message.data[1];
+    // const velocity = message.data.length > 2 ? message.data[2] : 0;
+
+    switch (command) {
+      case 144: // ON
+        this.onKeyPress(note);
+        break;
+      case 128: // OFF
+        this.onKeyRelease(note);
+        break;
+      default:
+        return;
+    }
+  };
 }
 
 // const sleep = (ms) => {

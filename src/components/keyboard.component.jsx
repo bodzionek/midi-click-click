@@ -1,32 +1,31 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 
 import Octave from "@/components/octave.component";
-import { validateIfValuesInRange, getKeyboardConfig } from "@/utilities";
+import useMidiContext from "@/hooks/useMidiContext";
+import { validateIfValuesInRange, getKeyboardConfig } from "@/utils";
 import { KEYBOARD_ERROR } from "@/consts/errors";
 
-const Keyboard = ({ first = 21, last = 108 }) => {
-  if (!validateIfValuesInRange(first, last, 21, 108)) {
+const Keyboard = () => {
+  const { keysRange } = useMidiContext();
+
+  if (!validateIfValuesInRange(keysRange.first, keysRange.last, 21, 108)) {
     throw new Error(KEYBOARD_ERROR);
   }
 
   const config = React.useMemo(
-    () => getKeyboardConfig(first, last),
-    [first, last]
+    () => getKeyboardConfig(keysRange.first, keysRange.last),
+    [keysRange]
   );
 
   return (
     <div className="flex items-center justify-center min-w-fit">
-      {config.map(({ number, start, end }) => (
-        <Octave key={number} number={number} start={start} end={end} />
-      ))}
+      <div className="flex items-start select-none justify-center shadow-[0_0_11px_-3px_rgba(0,0,0,0.2)]">
+        {config.map(({ number, start, end }) => (
+          <Octave key={number} number={number} start={start} end={end} />
+        ))}
+      </div>
     </div>
   );
-};
-
-Keyboard.propTypes = {
-  first: PropTypes.number,
-  last: PropTypes.number,
 };
 
 export default Keyboard;

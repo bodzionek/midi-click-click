@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { MidiContext } from "../contexts/midiContext";
+import { MidiContext } from "@/contexts/midiContext";
 
 const useMidiContext = () => {
   const context = React.useContext(MidiContext);
