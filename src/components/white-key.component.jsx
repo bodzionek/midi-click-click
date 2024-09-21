@@ -23,15 +23,15 @@ const WhiteKey = ({ noteIndex, name, subKey, renderSub, ...props }) => {
       {...props}
       className={cn(
         "group/white cursor-pointer w-[40px] border rounded-b-[4px] bg-gradient-to-b from-slate-200 to-[10%] to-white transition-all relative shadow-sm",
-        isDown ? "h-[204px] to-slate-50" : "h-[200px] to-white",
+        isDown ? "h-[202px]" : "h-[200px]",
         isDown && highlightOnPlay
-          ? "border-violet-600 border-t-gray-800"
-          : "border-gray-800 border-l-gray-400 border-r-gray-400"
+          ? "border-violet-600 border-t-gray-400"
+          : "border-gray-400"
       )}
     >
       <div
         className={cn(
-          "absolute top-0 bottom-0 z-10 w-full rounded-b-[4px] border-2 border-t-0 border-transparent",
+          "transition-colors absolute top-0 bottom-0 z-10 w-full rounded-b-[4px] border-2 border-t-0 border-transparent",
           isDown && highlightOnPlay ? "border-violet-600" : "border-transparent"
         )}
       ></div>

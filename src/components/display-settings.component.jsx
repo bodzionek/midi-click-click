@@ -30,7 +30,7 @@ const DisplaySettings = () => {
             htmlFor="octaves"
             className="select-none h-4 text-sm leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
           >
-            Octave names
+            Octave numbers
           </label>
         </div>
         <div className="flex items-center space-x-2">
