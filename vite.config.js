@@ -8,7 +8,7 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
-  base: '/bodzionek/midi-click-click/
+  base: "/midi-click-click/",
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
